@@ -46,7 +46,7 @@ const siteData = {
         {
             title: "Iron Dust",
             status: "CONCEPT",
-            summary: "The rust begins.",
+            summary: "In a world choked by metallic storms, humanity is fading. Survival isn't just about living—it's about not rusting away.",
             cover: "", // Resetting this as requested
             link: ""   // Resetting this as requested
         }
