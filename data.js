@@ -27,7 +27,7 @@ const siteData = {
         description: "<strong>Fused with the void. Bound by steel.</strong><br><br>After an industrial accident fuses a weary Pittsburgh mechanic with a parasitic alien artifact, he must master his terrifying new gravity powers to stop a fanatical zealot from triggering a global evolutionary purge.",
         
         // Button 1 (Main Action)
-        button1_Text: "Buy on Amazon",
+        button1_Text: "Read on Amazon",
         button1_Link: "https://www.amazon.com/dp/B0GBYTDXFP", 
         
         // Button 2 (Secondary Action)
