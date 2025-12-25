@@ -13,7 +13,7 @@ const siteData = {
         whatsapp: "https://wa.me/2349135489891", // Your Number Added
         facebook: "", // Placeholder
         instagram: "", // Placeholder
-        tiktok: "", // Placeholder
+        tiktok: "https://www.tiktok.com/@johnosaze08?_r=1&_t=ZS-92WOYQhbNrQ", // Placeholder
         twitter: "", // Placeholder (X)
         linkedin: "", // Placeholder
         amazon: "https://www.amazon.com/dp/B0GBYTDXFP" // Your New Book Link
