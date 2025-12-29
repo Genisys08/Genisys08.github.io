@@ -26,8 +26,8 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            /* FIXED: GRADIENT BACKGROUND */
-            background: radial-gradient(circle at center, #111115 0%, #000000 100%);
+            /* FIXED: Visible Deep Steel Gradient */
+            background: radial-gradient(circle at center, #25252a 0%, #000000 100%);
             color: #e2e8f0; 
             font-family: 'Rajdhani', sans-serif; 
             margin: 0; 
@@ -167,7 +167,7 @@
 
         .btn-disabled { opacity: 0.3; pointer-events: none; border: 1px solid #333; color: #555; }
 
-        /* --- FOOTER (SOCIALS MOVED HERE) --- */
+        /* --- FOOTER (SOCIALS) --- */
         footer { margin-top: 10rem; border-top: 1px solid #111; padding: 4rem; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
 
         @media (max-width: 900px) { 
@@ -175,8 +175,6 @@
             .nav-links { display: none; } 
             .service-card { padding: 2rem; }
             h1 { font-size: 15vw; }
-            
-            /* FIXED: TEXT OVERFLOW ON MOBILE */
             .service-title { font-size: 2rem; word-wrap: break-word; }
         }
         
@@ -311,16 +309,18 @@
             grid.appendChild(card);
         });
 
-        // 5. Socials System (Fixed Icon)
+        // 5. Socials System (Fixed Logic for Brands vs Solid)
         const socialMap = [
-            { key: 'fiverr', icon: 'fa-pen-fancy', color: '#1dbf73' }, // FIXED: This will now show a Quill/Pen
-            { key: 'whatsapp', icon: 'fa-whatsapp', color: '#25D366' },
-            { key: 'tiktok', icon: 'fa-tiktok', color: '#ff0050' },
-            { key: 'amazon', icon: 'fa-amazon', color: '#FF9900' },
-            { key: 'facebook', icon: 'fa-facebook-f', color: '#1877F2' },
-            { key: 'instagram', icon: 'fa-instagram', color: '#E4405F' },
-            { key: 'twitter', icon: 'fa-x-twitter', color: '#fff' },
-            { key: 'linkedin', icon: 'fa-linkedin-in', color: '#0A66C2' }
+            // Fiverr uses 'fas' (Solid)
+            { key: 'fiverr', icon: 'fa-pen-fancy', type: 'fas', color: '#1dbf73' }, 
+            // All others use 'fab' (Brands)
+            { key: 'whatsapp', icon: 'fa-whatsapp', type: 'fab', color: '#25D366' },
+            { key: 'tiktok', icon: 'fa-tiktok', type: 'fab', color: '#ff0050' },
+            { key: 'amazon', icon: 'fa-amazon', type: 'fab', color: '#FF9900' },
+            { key: 'facebook', icon: 'fa-facebook-f', type: 'fab', color: '#1877F2' },
+            { key: 'instagram', icon: 'fa-instagram', type: 'fab', color: '#E4405F' },
+            { key: 'twitter', icon: 'fa-x-twitter', type: 'fab', color: '#fff' },
+            { key: 'linkedin', icon: 'fa-linkedin-in', type: 'fab', color: '#0A66C2' }
         ];
 
         const footerRow = document.getElementById('footerIcons');
@@ -331,7 +331,8 @@
                 const fIcon = document.createElement('a');
                 fIcon.href = link;
                 fIcon.style = "color: #555; font-size: 1.5rem; text-decoration: none; transition: 0.3s; margin: 0 10px;";
-                fIcon.innerHTML = `<i class="fas ${social.icon}"></i>`; // Changed to 'fas' for solid icons to be safe
+                // Uses social.type to switch between 'fab' and 'fas'
+                fIcon.innerHTML = `<i class="${social.type} ${social.icon}"></i>`;
                 fIcon.onmouseover = function() { this.style.color = "#fff"; this.style.transform = "scale(1.2)"; };
                 fIcon.onmouseout = function() { this.style.color = "#555"; this.style.transform = "scale(1)"; };
                 fIcon.target = '_blank';
