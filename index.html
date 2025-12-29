@@ -26,8 +26,8 @@
         html { scroll-behavior: smooth; }
         
         body { 
-            /* FIXED: Visible Deep Steel Gradient */
-            background: radial-gradient(circle at center, #25252a 0%, #000000 100%);
+            /* FIXED: Visible Deep Steel Spotlight Gradient */
+            background: radial-gradient(circle at center, #2a2a35 0%, #050505 100%);
             color: #e2e8f0; 
             font-family: 'Rajdhani', sans-serif; 
             margin: 0; 
@@ -241,7 +241,7 @@
     <footer>
         <div id="footerName" style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; margin-bottom: 1rem;">...</div>
         <p>ENGINEERED IN LAGOS. &copy; 2025.</p>
-        <div id="footerIcons" style="margin-top:2rem; display:flex; justify-content:center; gap:20px; flex-wrap: wrap;"></div>
+        <div id="footerIcons" style="margin-top:2rem; display:flex; justify-content:center; gap:20px; flex-wrap: wrap; align-items: center;"></div>
     </footer>
 
     <script src="data.js"></script>
@@ -309,18 +309,19 @@
             grid.appendChild(card);
         });
 
-        // 5. Socials System (Fixed Logic for Brands vs Solid)
+        // 5. Socials System (Fixed: Fiverr as Text)
         const socialMap = [
-            // Fiverr uses 'fas' (Solid)
-            { key: 'fiverr', icon: 'fa-pen-fancy', type: 'fas', color: '#1dbf73' }, 
-            // All others use 'fab' (Brands)
-            { key: 'whatsapp', icon: 'fa-whatsapp', type: 'fab', color: '#25D366' },
-            { key: 'tiktok', icon: 'fa-tiktok', type: 'fab', color: '#ff0050' },
-            { key: 'amazon', icon: 'fa-amazon', type: 'fab', color: '#FF9900' },
-            { key: 'facebook', icon: 'fa-facebook-f', type: 'fab', color: '#1877F2' },
-            { key: 'instagram', icon: 'fa-instagram', type: 'fab', color: '#E4405F' },
-            { key: 'twitter', icon: 'fa-x-twitter', type: 'fab', color: '#fff' },
-            { key: 'linkedin', icon: 'fa-linkedin-in', type: 'fab', color: '#0A66C2' }
+            // No Icon for Fiverr, we handle it in the loop
+            { key: 'fiverr', color: '#1dbf73' }, 
+            
+            // Standard Icons
+            { key: 'whatsapp', icon: 'fa-whatsapp', color: '#25D366' },
+            { key: 'tiktok', icon: 'fa-tiktok', color: '#ff0050' },
+            { key: 'amazon', icon: 'fa-amazon', color: '#FF9900' },
+            { key: 'facebook', icon: 'fa-facebook-f', color: '#1877F2' },
+            { key: 'instagram', icon: 'fa-instagram', color: '#E4405F' },
+            { key: 'twitter', icon: 'fa-x-twitter', color: '#fff' },
+            { key: 'linkedin', icon: 'fa-linkedin-in', color: '#0A66C2' }
         ];
 
         const footerRow = document.getElementById('footerIcons');
@@ -330,10 +331,16 @@
             if (link && link !== "") {
                 const fIcon = document.createElement('a');
                 fIcon.href = link;
-                fIcon.style = "color: #555; font-size: 1.5rem; text-decoration: none; transition: 0.3s; margin: 0 10px;";
-                // Uses social.type to switch between 'fab' and 'fas'
-                fIcon.innerHTML = `<i class="${social.type} ${social.icon}"></i>`;
-                fIcon.onmouseover = function() { this.style.color = "#fff"; this.style.transform = "scale(1.2)"; };
+                fIcon.style = "color: #555; font-size: 1.5rem; text-decoration: none; transition: 0.3s; margin: 0 10px; display: inline-flex; align-items: center;";
+                
+                // CHECK: If it is Fiverr, render TEXT. If not, render ICON.
+                if (social.key === 'fiverr') {
+                    fIcon.innerHTML = `<span style="font-family:'Orbitron', sans-serif; font-weight:900; letter-spacing:1px; font-size:1rem;">FIVERR</span>`;
+                } else {
+                    fIcon.innerHTML = `<i class="fab ${social.icon}"></i>`;
+                }
+
+                fIcon.onmouseover = function() { this.style.color = "#fff"; this.style.transform = "scale(1.1)"; };
                 fIcon.onmouseout = function() { this.style.color = "#555"; this.style.transform = "scale(1)"; };
                 fIcon.target = '_blank';
                 footerRow.appendChild(fIcon);
