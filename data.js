@@ -8,18 +8,18 @@ const siteData = {
     authorName: "JOHN OSAZE",
     role: "Architect of Worlds | Speculative Fiction Author",
     
-    // 2. THE SERVICE (FIVERR GIG) - *NEW SECTION*
+    // 2. THE SERVICE (FIVERR GIG)
     ghostwriting: {
-        isActive: true, // Set to false to hide this section temporarily
+        isActive: true, 
         title: "HIRE THE ARCHITECT",
+        status: "OPEN FOR BUSINESS", // <--- FIXED: THIS WAS MISSING
         headline: "STOP SETTLING FOR AI GENERATED NOISE.",
-        description: "I bring engineering precision to narrative chaos. Whether it is Sci-Fi, Gritty Noir, or High-Stakes Thriller, I build stories that bleed, breathe, and break the mold.",
+        description: "I bring engineering precision to narrative chaos. Whether it is Hard Sci-Fi, Gritty Noir, or High-Stakes Thriller, I build stories that bleed, breathe, and break the mold.",
         priceStart: "$40",
-        // The Link to your Fiverr
         link: "http://www.fiverr.com/s/BRZ48zW" 
     },
 
-    // 3. SOCIAL MEDIA LINKS (Leave empty "" to hide)
+    // 3. SOCIAL MEDIA LINKS
     socialLinks: {
         whatsapp: "https://wa.me/2349135489891", 
         facebook: "", 
@@ -28,26 +28,24 @@ const siteData = {
         twitter: "", 
         linkedin: "", 
         amazon: "https://www.amazon.com/dp/B0GBYTDXFP",
-        fiverr: "http://www.fiverr.com/s/BRZ48zW" // Added Icon for Fiverr
+        fiverr: "http://www.fiverr.com/s/BRZ48zW"
     },
 
     // 4. THE FLAGSHIP BOOK
     featuredBook: {
         title: "SHADOW STEEL",
         status: "NOW AVAILABLE",
-        coverImage: "shadow.jpg", // Ensure this file exists in your folder
+        coverImage: "shadow.jpg", 
         description: "<strong>Fused with the void. Bound by steel.</strong><br><br>After an industrial accident fuses a weary Pittsburgh mechanic with a parasitic alien artifact, he must master his terrifying new gravity powers to stop a fanatical zealot from triggering a global evolutionary purge.",
         
-        // Primary Action
         button1_Text: "READ ON AMAZON",
         button1_Link: "https://www.amazon.com/dp/B0GBYTDXFP", 
         
-        // Secondary Action
         button2_Text: "JOIN THE LEGION", 
         button2_Link: "https://whatsapp.com/channel/0029VbBpLjUInlqUlabqbp2E" 
     },
 
-    // 5. THE UNIVERSE (Add as many as you want)
+    // 5. THE UNIVERSE
     futureBooks: [
         {
             title: "VEIL OF THE DEAD",
