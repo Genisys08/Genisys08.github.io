@@ -313,7 +313,7 @@
 
         // 5. Socials System (Fixed Icon)
         const socialMap = [
-            { key: 'fiverr', icon: 'fa-feather-pointed', color: '#1dbf73' }, // FIXED ICON (Quill)
+            { key: 'fiverr', icon: 'fa-pen-fancy', color: '#1dbf73' }, // FIXED: This will now show a Quill/Pen
             { key: 'whatsapp', icon: 'fa-whatsapp', color: '#25D366' },
             { key: 'tiktok', icon: 'fa-tiktok', color: '#ff0050' },
             { key: 'amazon', icon: 'fa-amazon', color: '#FF9900' },
@@ -331,7 +331,7 @@
                 const fIcon = document.createElement('a');
                 fIcon.href = link;
                 fIcon.style = "color: #555; font-size: 1.5rem; text-decoration: none; transition: 0.3s; margin: 0 10px;";
-                fIcon.innerHTML = `<i class="fab ${social.icon}"></i>`;
+                fIcon.innerHTML = `<i class="fas ${social.icon}"></i>`; // Changed to 'fas' for solid icons to be safe
                 fIcon.onmouseover = function() { this.style.color = "#fff"; this.style.transform = "scale(1.2)"; };
                 fIcon.onmouseout = function() { this.style.color = "#555"; this.style.transform = "scale(1)"; };
                 fIcon.target = '_blank';
