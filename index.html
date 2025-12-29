@@ -12,40 +12,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- THE SNYDER ENGINE (CSS) --- */
+        /* --- THE SNYDER ENGINE (FIXED) --- */
         :root {
-            --void-black: #050505;
-            --void-deep: #000000;
+            --void-black: #000000;
             --steel-dim: #4a5568;
             --steel-light: #a0aec0;
             --gold-muted: #c5a059;
             --gold-bright: #d4af37;
-            --signal-red: #8b0000; /* For the "Hire" accent */
-            --glass: rgba(20, 20, 23, 0.7);
-            --border: rgba(255, 255, 255, 0.05);
-            --speed-ramp: cubic-bezier(0.19, 1, 0.22, 1); /* The "Heavy" Animation */
+            --border: rgba(255, 255, 255, 0.08);
+            --speed-ramp: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         html { scroll-behavior: smooth; }
+        
         body { 
-            background-color: var(--void-black); 
+            /* FIXED: GRADIENT BACKGROUND */
+            background: radial-gradient(circle at center, #111115 0%, #000000 100%);
             color: #e2e8f0; 
             font-family: 'Rajdhani', sans-serif; 
             margin: 0; 
             font-size: 18px; 
             overflow-x: hidden; 
+            min-height: 100vh;
         }
 
         /* --- ATMOSPHERE --- */
         .grain {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
             opacity: 0.05; pointer-events: none; z-index: 999;
-        }
-        .vignette {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle, transparent 40%, black 120%);
-            z-index: 998; pointer-events: none;
         }
 
         /* --- NAV --- */
@@ -99,12 +94,12 @@
 
         /* --- THE SERVICE CARD (FIVERR) --- */
         .service-card {
-            background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(5,5,5,0.95));
-            border: 1px solid #333;
+            background: linear-gradient(145deg, rgba(25,25,30,0.8), rgba(0,0,0,0.95));
+            border: 1px solid rgba(255,255,255,0.1);
             border-left: 4px solid var(--gold-muted);
             padding: 4rem; text-align: center;
             margin-bottom: 8rem; position: relative; overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
         .service-tag {
             font-family: 'Orbitron', sans-serif; color: var(--gold-muted);
@@ -112,6 +107,7 @@
         }
         .service-title {
             font-family: 'Cinzel', serif; font-size: 3rem; color: white; margin: 0 0 1rem 0;
+            line-height: 1.1;
         }
         .service-desc {
             max-width: 700px; margin: 0 auto 2rem auto; color: #aaa; line-height: 1.6; font-size: 1.1rem;
@@ -124,7 +120,7 @@
         }
         .book-img { 
             width: 100%; max-width: 350px; 
-            box-shadow: -20px 20px 60px rgba(0,0,0,0.9); 
+            box-shadow: -20px 20px 60px rgba(0,0,0,0.8); 
             transition: transform 0.6s var(--speed-ramp); 
             filter: saturate(0.8) contrast(1.1);
         }
@@ -158,33 +154,20 @@
             position: relative; overflow: hidden;
         }
         
-        /* Gold Button (Books) */
         .btn-gold { background: var(--gold-muted); color: #000; }
         .btn-gold:hover { background: #fff; box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); }
 
-        /* Void Button (Ghostwriting) */
         .btn-void { 
             background: transparent; border: 1px solid var(--gold-muted); color: var(--gold-muted); 
         }
         .btn-void:hover { background: var(--gold-muted); color: #000; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
 
-        /* Ghost Button */
         .btn-ghost { border: 1px solid rgba(255,255,255,0.2); color: #888; background: transparent; }
         .btn-ghost:hover { border-color: #fff; color: #fff; }
 
         .btn-disabled { opacity: 0.3; pointer-events: none; border: 1px solid #333; color: #555; }
 
-        /* --- SOCIALS --- */
-        .floating-socials {
-            position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column-reverse; gap: 20px; z-index: 1001;
-        }
-        .social-bubble {
-            width: 50px; height: 50px; border-radius: 50%; background: #000;
-            border: 1px solid #333; color: #666; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; font-size: 1.1rem; transition: 0.3s;
-        }
-        .social-bubble:hover { border-color: var(--gold-muted); color: var(--gold-muted); transform: scale(1.1); }
-
+        /* --- FOOTER (SOCIALS MOVED HERE) --- */
         footer { margin-top: 10rem; border-top: 1px solid #111; padding: 4rem; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
 
         @media (max-width: 900px) { 
@@ -192,6 +175,9 @@
             .nav-links { display: none; } 
             .service-card { padding: 2rem; }
             h1 { font-size: 15vw; }
+            
+            /* FIXED: TEXT OVERFLOW ON MOBILE */
+            .service-title { font-size: 2rem; word-wrap: break-word; }
         }
         
         /* ANIMATION UTILS */
@@ -201,9 +187,6 @@
 </head>
 <body>
     <div class="grain"></div>
-    <div class="vignette"></div>
-
-    <div id="floatBar" class="floating-socials"></div>
 
     <nav>
         <div class="nav-logo" id="navName">LOADING...</div>
@@ -260,7 +243,7 @@
     <footer>
         <div id="footerName" style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; margin-bottom: 1rem;">...</div>
         <p>ENGINEERED IN LAGOS. &copy; 2025.</p>
-        <div id="footerIcons" style="margin-top:2rem; display:flex; justify-content:center; gap:20px;"></div>
+        <div id="footerIcons" style="margin-top:2rem; display:flex; justify-content:center; gap:20px; flex-wrap: wrap;"></div>
     </footer>
 
     <script src="data.js"></script>
@@ -275,21 +258,21 @@
         document.getElementById('heroRole').innerText = siteData.role;
         document.getElementById('footerName').innerText = siteData.authorName;
 
-        // 2. Service Section Logic (The New Part)
+        // 2. Service Section Logic
         const srv = siteData.ghostwriting;
         const srvBlock = document.getElementById('serviceBlock');
         const heroBtn = document.getElementById('heroServiceBtn');
 
         if (srv && srv.isActive) {
             srvBlock.style.display = "block";
-            document.getElementById('servStatus').innerText = "STATUS: " + srv.status; // Fixed variable name
+            document.getElementById('servStatus').innerText = "STATUS: " + srv.status;
             document.getElementById('servTitle').innerText = srv.title;
             document.getElementById('servHead').innerText = srv.headline;
             document.getElementById('servDesc').innerText = srv.description;
             document.getElementById('servLink').href = srv.link;
-            heroBtn.href = srv.link; // Link the Hero button too
+            heroBtn.href = srv.link; 
         } else {
-            heroBtn.style.display = "none"; // Hide hero button if service is off
+            heroBtn.style.display = "none"; 
         }
 
         // 3. Featured Book
@@ -328,9 +311,9 @@
             grid.appendChild(card);
         });
 
-        // 5. Socials System
+        // 5. Socials System (Fixed Icon)
         const socialMap = [
-            { key: 'fiverr', icon: 'fa-pen-nib', color: '#1dbf73' }, // Fiverr Icon
+            { key: 'fiverr', icon: 'fa-feather-pointed', color: '#1dbf73' }, // FIXED ICON (Quill)
             { key: 'whatsapp', icon: 'fa-whatsapp', color: '#25D366' },
             { key: 'tiktok', icon: 'fa-tiktok', color: '#ff0050' },
             { key: 'amazon', icon: 'fa-amazon', color: '#FF9900' },
@@ -340,33 +323,23 @@
             { key: 'linkedin', icon: 'fa-linkedin-in', color: '#0A66C2' }
         ];
 
-        const floatBar = document.getElementById('floatBar');
         const footerRow = document.getElementById('footerIcons');
 
         socialMap.forEach(social => {
             const link = siteData.socialLinks[social.key];
             if (link && link !== "") {
-                // Float
-                const bubble = document.createElement('a');
-                bubble.href = link;
-                bubble.className = 'social-bubble';
-                bubble.innerHTML = `<i class="fab ${social.icon}"></i>`;
-                bubble.target = '_blank';
-                floatBar.appendChild(bubble);
-
-                // Footer
                 const fIcon = document.createElement('a');
                 fIcon.href = link;
-                fIcon.style = "color: #555; font-size: 1.2rem; text-decoration: none; transition: 0.3s;";
+                fIcon.style = "color: #555; font-size: 1.5rem; text-decoration: none; transition: 0.3s; margin: 0 10px;";
                 fIcon.innerHTML = `<i class="fab ${social.icon}"></i>`;
-                fIcon.onmouseover = function() { this.style.color = "#fff"; };
-                fIcon.onmouseout = function() { this.style.color = "#555"; };
+                fIcon.onmouseover = function() { this.style.color = "#fff"; this.style.transform = "scale(1.2)"; };
+                fIcon.onmouseout = function() { this.style.color = "#555"; this.style.transform = "scale(1)"; };
                 fIcon.target = '_blank';
                 footerRow.appendChild(fIcon);
             }
         });
 
-        // 6. Intersection Observer (The Speed Ramp Reveal)
+        // 6. Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
